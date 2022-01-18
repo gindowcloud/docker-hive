@@ -1,7 +1,7 @@
 ##### 拉取分支:
 
 ```bash
-git clone git@github.com:gindowcloud/docker-hive.git
+git clone https://github.com/gindowcloud/docker-hive.git
 ```
 
 ##### 启动容器:
