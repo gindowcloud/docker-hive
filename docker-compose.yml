@@ -12,8 +12,8 @@ services:
 
   ########## Hadoop Name Node ##########
   namenode:
+    container_name: namenode
     image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
-    restart: always
     volumes:
       - namenode:/hadoop/dfs/name
     environment:
@@ -27,8 +27,8 @@ services:
 
   ########## Hadoop Data Node ##########
   datanode:
+    container_name: datanode
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
-    restart: always
     volumes:
       - datanode:/hadoop/dfs/data
     env_file:
@@ -40,6 +40,7 @@ services:
 
   ########## Hive ##########
   hive:
+    container_name: hive
     image: gindow/hive
     env_file:
       - ./hive.env
@@ -53,6 +54,7 @@ services:
 
   ########## Hive Meta Store ##########
   hive-metastore:
+    container_name: hive-metastore
     image: bde2020/hive:2.3.2-postgresql-metastore
     env_file:
       - ./hive.env
@@ -66,12 +68,14 @@ services:
 
   ########## Hive Postgresql ##########
   hive-postgresql:
+    container_name: hive-postgresql
     image: bde2020/hive-metastore-postgresql:2.3.0
     networks:
       - backend
 
   ########## Presto ##########
   presto-coordinator:
+    container_name: presto
     image: shawnzhu/prestodb:0.181
     ports:
       - "9090:8080"
